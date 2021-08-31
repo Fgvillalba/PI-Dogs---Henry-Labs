@@ -69,8 +69,24 @@ router.get('/dogs/:idRaza', async (req, res) => {
  } 
   res.status(404)
      .send("No existe una raza para dicho Id") 
+});
 
-})
+
+router.get('/temperament', async function(req, res) {
+ const apiInfo = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+ const array = [];
+ apiInfo.data.forEach(element => {
+   const temp = element.temperament?.split(",");
+   temp?.forEach(t => {
+    Temperament.findOrCreate({
+      where: {
+        name: t.replace(" ", "")
+      }
+    })
+   })
+  });
+ });
+ 
 
 
 
