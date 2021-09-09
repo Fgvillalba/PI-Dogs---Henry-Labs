@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector} from 'react-redux'; //hooks que reemplazan el mapStateToProps y las accionts
 import { getDogs, getTemperaments} from '../actions';
-import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import Paged from "./Paged";
 import FilterTemp from "./FilterTemp";
@@ -32,8 +31,7 @@ function Home (){
  };
 
  return (
-    <div>
-      <Link to='/dog'>Create Race</Link>   
+    <div>  
       <h1> DOG BREEDS APP </h1> 
       <button onClick={handleReload}>Reload</button> 
       <div>

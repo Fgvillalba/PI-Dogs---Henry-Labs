@@ -1,13 +1,13 @@
 import axios from 'axios';
 export const GET_DOGS = "GET_DOGS";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
+export const GET_BY_NAME = "GET_BY_NAME";
+export const GET_BY_ID = "GET_BY_ID"
 export const FILTER_BY_TEMP = "FILTER_BY_TEMP";
 export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
-export const GET_BY_NAME = "GET_BY_NAME";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
-
-
+export const CLEAR = "CLEAR";
 
 
 export function getDogs(){
@@ -21,6 +21,13 @@ export function getByName(payload){
     return async function(dispatch) {
         var res = await axios.get(`http://localhost:3001/dogs?name=${payload}`);
         dispatch({ type: GET_BY_NAME, payload: res.data});
+     }
+};
+
+export function getById(payload){
+    return async function(dispatch) {
+        var res = await axios.get(`http://localhost:3001/dogs/${payload}`);
+        dispatch({ type: GET_BY_ID, payload: res.data});
      }
 };
 
@@ -56,5 +63,11 @@ export function orderByName( payload ){
     return {
         type: ORDER_BY_NAME,
         payload,
+    }
+};
+
+export function clear(){
+    return {
+        type: CLEAR,   
     }
 };

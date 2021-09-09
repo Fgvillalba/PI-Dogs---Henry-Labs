@@ -1,9 +1,19 @@
-import {GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, FILTER_BY_TEMP, FILTER_BY_ORIGIN, ORDER_BY_WEIGHT, ORDER_BY_NAME } from '../actions'
+import {GET_DOGS, 
+  GET_TEMPERAMENTS, 
+  GET_BY_NAME, 
+  FILTER_BY_TEMP, 
+  FILTER_BY_ORIGIN,
+  ORDER_BY_WEIGHT, 
+  ORDER_BY_NAME,
+  GET_BY_ID,
+  CLEAR
+} from '../actions'
 
 const initialState = {
     dogs: [],
     temperaments: [],
     dogsCopy: [],
+    breedDetail: undefined
 };
 
 function rootReducer(state = initialState, {type, payload}){
@@ -19,6 +29,11 @@ function rootReducer(state = initialState, {type, payload}){
         ...state,
         dogs: payload  
        }   
+    case GET_BY_ID:
+      return {
+        ...state,
+        breedDetail: payload
+      }
     case GET_TEMPERAMENTS: 
       return {
         ...state,
@@ -70,9 +85,11 @@ function rootReducer(state = initialState, {type, payload}){
          ...state,
          dogs: orderByName
        }
-
-     
-      
+    case CLEAR:
+      return {
+        ...state,
+        breedDetail: undefined
+      }
     default: 
         return state;
   }  
