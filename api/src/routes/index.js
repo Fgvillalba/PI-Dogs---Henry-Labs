@@ -20,7 +20,7 @@ router.get('/dogs', async (req, res) => {
   return {
       id: raza.id,
       name: raza.name,
-      weight: raza.weight.metric,
+      weight: raza.weight.metric.includes("NaN")? "15 - 25" : raza.weight.metric,
       temperaments: raza.temperament?.replace(/ /g, '').split(','),
       image: raza.image.url,
   }

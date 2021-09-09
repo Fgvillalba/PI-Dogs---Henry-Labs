@@ -4,6 +4,8 @@ export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const FILTER_BY_TEMP = "FILTER_BY_TEMP";
 export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 export const GET_BY_NAME = "GET_BY_NAME";
+export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
+export const ORDER_BY_NAME = "ORDER_BY_NAME";
 
 
 
@@ -39,6 +41,20 @@ export function filterByTemp( payload ){
 export function filterByOrigin( payload ){
     return {
         type: FILTER_BY_ORIGIN,
+        payload,
+    }
+};
+
+export function orderByWeight( payload ){
+    return {
+        type: ORDER_BY_WEIGHT,
+        payload,
+    }
+};
+
+export function orderByName( payload ){
+    return {
+        type: ORDER_BY_NAME,
         payload,
     }
 };
