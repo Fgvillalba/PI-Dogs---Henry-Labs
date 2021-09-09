@@ -10,11 +10,8 @@ export default function Card({dog}){
        <h5>Weight:</h5>
        <span>{dog.weight}</span>
        {dog.temperaments?.map((t) => {
-          if(dog.createdAt){ 
-          return <Temp key={t.id} temp={t.name}/>
-          } 
-           return <Temp key={t} temp={t}/>    
-         })}
+          return <Temp key={t} temp={t}/>    
+        })}
    </div>
  )
 }

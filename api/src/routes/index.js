@@ -25,7 +25,7 @@ router.get('/dogs', async (req, res) => {
       image: raza.image.url,
   }
  });
- const dataInfo = await Dog.findAll({
+ const infoDataBase = await Dog.findAll({
     attributes: ['id', 'name', 'weight', 'image', 'createdAt'],
     include: [{
       model: Temperament,
@@ -35,6 +35,17 @@ router.get('/dogs', async (req, res) => {
       }
     }]
   });
+  const dataInfo = infoDataBase.map((breed) => {
+    return {
+      id: breed.id,
+      name: breed.name,
+      weight: breed.weight,
+      createdAt: breed.createdAt,
+      temperaments: breed.temperaments.map((t) => t.name),
+      image: breed.image,
+    }
+  });
+
  const info = infoRes.concat(dataInfo);
  
   if(race){
@@ -64,7 +75,7 @@ router.get('/dogs/:idRaza', async (req, res) => {
         life_span: raza.life_span
     }
  });
- const dataInfo = await Dog.findAll({ 
+ const infoDataBase = await Dog.findAll({ 
   attributes: ['id', 'name', 'weight', 'image', 'height', 'life_span', 'createdAt'],
   include: [{
     model: Temperament,
@@ -74,6 +85,20 @@ router.get('/dogs/:idRaza', async (req, res) => {
     }
   }]
   });
+
+  const dataInfo = infoDataBase.map((breed) => {
+    return {
+      id: breed.id,
+      name: breed.name,
+      weight: breed.weight,
+      image: breed.image,
+      height: breed.height,
+      life_span: breed.life_span,
+      temperaments: breed.temperaments.map((t) => t.name),
+    }
+  });
+
+
  const info = infoRes.concat(dataInfo);
  const dog = info.find((r) => r.id == id);
  if(dog){
