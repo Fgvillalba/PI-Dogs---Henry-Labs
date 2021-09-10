@@ -8,6 +8,7 @@ export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const CLEAR = "CLEAR";
+export const POST_BREED = "POST_BREED";
 
 
 export function getDogs(){
@@ -70,4 +71,11 @@ export function clear(){
     return {
         type: CLEAR,   
     }
+};
+
+export function postBreed(payload){
+    return async function(dispatch) {
+        var res = await axios.post("http://localhost:3001/dog/", payload);
+        return res;
+     }
 };

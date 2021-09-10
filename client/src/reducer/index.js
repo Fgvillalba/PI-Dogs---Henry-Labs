@@ -1,4 +1,5 @@
-import {GET_DOGS, 
+import {
+  GET_DOGS, 
   GET_TEMPERAMENTS, 
   GET_BY_NAME, 
   FILTER_BY_TEMP, 
@@ -6,7 +7,8 @@ import {GET_DOGS,
   ORDER_BY_WEIGHT, 
   ORDER_BY_NAME,
   GET_BY_ID,
-  CLEAR
+  CLEAR,
+  POST_BREED
 } from '../actions'
 
 const initialState = {
@@ -39,6 +41,10 @@ function rootReducer(state = initialState, {type, payload}){
         ...state,
         temperaments: payload,
       }
+    case POST_BREED:
+      return {
+        ...state,
+      } 
     case FILTER_BY_TEMP: 
       const filterTemp = state.dogsCopy.filter((b) => b.temperaments?.includes(payload))
       return {

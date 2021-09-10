@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { useDispatch, useSelector} from 'react-redux'; //hooks que reemplazan el mapStateToProps y las accionts
-import { getDogs, getTemperaments} from '../actions';
+import { useDispatch, useSelector} from 'react-redux'; 
+import { getDogs } from '../actions';
 import Cards from './Cards';
 import Paged from "./Paged";
 import FilterTemp from "./FilterTemp";
@@ -10,7 +10,7 @@ import Order from "./Order";
 
 function Home (){
  const dispatch = useDispatch();
- const dogs = useSelector((state) => state.dogs);  //map state to props: dogs.
+ const dogs = useSelector((state) => state.dogs);  
  
  //Paginado
  const [actualPage, setActualPage] = useState(1);
@@ -20,8 +20,7 @@ function Home (){
  const dogsPaged = dogs.slice(firstBreed,lastBreed);
 
  useEffect(() => {    
-   dispatch(getDogs());
-   dispatch(getTemperaments()); 
+   dispatch(getDogs()); 
  },[dispatch]);
 
  function handleReload(e){ 
@@ -39,7 +38,7 @@ function Home (){
         <Order setActualPage={setActualPage}/>
         <FilterOrigin title='Filter by origin' setActualPage={setActualPage}/>
         <FilterTemp title='Filter by Temperament' setActualPage={setActualPage}/>
-        <Paged breedsPerPage={breedsPerPage} breeds={dogs.length} setActualPage={setActualPage} />
+        <Paged breedsPerPage={breedsPerPage} breeds={dogs.length} setActualPage={setActualPage} actualPage={actualPage} />
         <Cards dogs={dogsPaged}/>
       </div>
     </div>

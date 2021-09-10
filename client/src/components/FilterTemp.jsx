@@ -1,11 +1,15 @@
-import React from 'react';
+import {React, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { filterByTemp } from '../actions';
+import { getTemperaments, filterByTemp } from '../actions';
 
 
 export default function FilterTemp({title, setActualPage}){
  const dispatch = useDispatch();
  const temps = useSelector((state) => state.temperaments);
+
+ useEffect(() => {    
+  dispatch(getTemperaments()); 
+ },[dispatch]);
 
  function handleOnChange(e){
   e.preventDefault();

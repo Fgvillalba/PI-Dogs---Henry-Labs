@@ -1,0 +1,12 @@
+
+.selected {
+    color:red;
+};
+
+.buttonPage {
+  border: 3px solid greenyellow !important;    
+}
+
+.buttonPage:hover {
+    background-color: violet;
+}

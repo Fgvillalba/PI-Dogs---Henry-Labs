@@ -13,7 +13,7 @@ export default function Card(props){
    return () => {
     dispatch(clear())
   }
- },[dispatch,props]);  
+ },[dispatch,props]);   
 
  const breed = useSelector((state) => state.breedDetail);
 

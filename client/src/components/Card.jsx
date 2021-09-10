@@ -7,11 +7,10 @@ export default function Card({dog}){
    return(
    <div>
        <img src={dog.image} alt='Not found' width= '200px' height='200px'/>
-       <Link to={`/dog/${dog.id}`}>
+       <Link to={`/home/dog/${dog.id}`}>
        <h3>{dog.name}</h3>
        </Link>
-       <h5>Weight:</h5>
-       <span>{dog.weight}</span>
+       <h5>Weight: {dog.weight}</h5>
        {dog.temperaments?.map((t) => {
           return <Temp key={t} temp={t}/>    
         })}

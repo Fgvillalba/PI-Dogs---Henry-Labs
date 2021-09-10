@@ -36,13 +36,9 @@ router.get('/dogs', async (req, res) => {
     }]
   });
   const dataInfo = infoDataBase.map((breed) => {
-    return {
-      id: breed.id,
-      name: breed.name,
-      weight: breed.weight,
-      createdAt: breed.createdAt,
-      temperaments: breed.temperaments.map((t) => t.name),
-      image: breed.image,
+   return {
+      ...breed.get(),
+      temperaments: breed.temperaments.map((t) => t.name)
     }
   });
 
@@ -88,13 +84,8 @@ router.get('/dogs/:idRaza', async (req, res) => {
 
   const dataInfo = infoDataBase.map((breed) => {
     return {
-      id: breed.id,
-      name: breed.name,
-      weight: breed.weight,
-      image: breed.image,
-      height: breed.height,
-      life_span: breed.life_span,
-      temperaments: breed.temperaments.map((t) => t.name),
+      ...breed.get(),
+      temperaments: breed.temperaments.map((t) => t.name)
     }
   });
 

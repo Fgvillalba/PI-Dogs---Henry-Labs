@@ -1,9 +1,9 @@
 import React from 'react';
+import "../styles/Paged.css";
 
 
 
-
-export default function Paged({breedsPerPage, breeds, setActualPage}){
+export default function Paged({breedsPerPage, breeds, setActualPage, actualPage}){
  const pages = []; 
  for(var i= 0; i < Math.ceil(breeds/breedsPerPage); i++){
     pages.push(i+1); 
@@ -11,7 +11,7 @@ export default function Paged({breedsPerPage, breeds, setActualPage}){
   return (
     <div>
         {pages?.map((p) => (
-         <button key={p} onClick={()=>setActualPage(p)}>{p}</button>  
+         <button className={`buttonPage ${actualPage === p? "selected": "" }`} key={p} onClick={()=>setActualPage(p)}>{p}</button>  
         ))}
     </div>
   )
