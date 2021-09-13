@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/Paged.css";
+import "./Paged.css";
 
 
 
@@ -9,10 +9,12 @@ export default function Paged({breedsPerPage, breeds, setActualPage, actualPage}
     pages.push(i+1); 
  }
   return (
-    <div>
+    <div className="container">
         {pages?.map((p) => (
-         <button className={`buttonPage ${actualPage === p? "selected": "" }`} key={p} onClick={()=>setActualPage(p)}>{p}</button>  
+         <button className={`button-page ${actualPage === p? "selected": ""}`} key={p} onClick={()=>setActualPage(p)}>{p}</button>  
         ))}
     </div>
   )
 }
+
+//{`buttonPage ${actualPage === p? "selected": "" }`}

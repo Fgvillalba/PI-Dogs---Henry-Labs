@@ -5,7 +5,7 @@
     width: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 2rem;
     box-shadow: 3px 2px 19px -13px rgb(0 0 0 / 75%);
@@ -24,6 +24,7 @@
 .cardContainer a h3 {
     text-decoration: none;
     text-transform: uppercase;
+    line-height: 1.5;
 }
 .contentTemp{
     width: 100%;

@@ -2,6 +2,7 @@ import {React, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getById, clear } from '../actions';
 import Temp from './Temp';
+import './BreedDetail.css'
 
 
 
@@ -19,22 +20,29 @@ export default function Card({match: { params: {id}}}){
  const breed = useSelector((state) => state.breedDetail);
 
   return(
-   <div>
+   <div className='container'>
        {breed? 
-       <div> 
-        <img src={breed.image} alt='Not found' width= '200px' height='200px'/>
-        <h3>{breed.name}</h3>
-        <h5>Weight:</h5>
-        <span>{breed.weight}</span>
-        <h5>Height:</h5>
-        <span>{breed.height}</span>
-        <h5>Life Span:</h5>
-        <span>{breed.life_span}</span>
+       <div className='breedContainer'> 
         <div>
-         <h5>Temperaments:</h5> 
+        <img src={breed.image} alt='Not found' width= '200px' height='200px'/>
+        </div>
+        <div className='info'>
+        <h3>{breed.name}</h3>
+        <div>
+        <ul className='caracteristics'>
+        <li><span>Weight:</span> {breed.weight}</li>
+        <li><span>Height:</span> {breed.height}</li>
+        <li><span>Life Span:</span> {breed.life_span}</li>
+        </ul>
+        </div>
+        <div>
+        <h4>Temperaments:</h4> 
+         <ul className='contentTemp'>
          {breed.temperaments?.map((t) => {
           return <Temp key={t} temp={t}/>    
          })}
+         </ul>
+        </div>
         </div>
        </div> : <span> Cargando... </span> }
    </div>

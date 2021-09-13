@@ -14,7 +14,7 @@ export default function Card({dog}){
        <Link to={`/dog/${dog.id}`}>
        <h3># {dog.name}</h3>
        </Link>
-       <h4>Weight: {dog.weight}</h4>
+       <h4>Weight   {dog.weight}</h4>
        <ul className='contentTemp'>
        {dog.temperaments?.map((t) => {
           return <Temp key={t} temp={t}/>    
