@@ -1,0 +1,17 @@
+h1{
+ font-size: 0;    
+ width: 64px;
+ height: 64px;
+ background-image: url('../images/logo.png') ;
+ background-size: cover;
+ background-position: center;
+ border-radius: 80%;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    min-width: 1024px;
+}

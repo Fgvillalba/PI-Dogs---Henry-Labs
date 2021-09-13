@@ -46,10 +46,11 @@ function rootReducer(state = initialState, {type, payload}){
         ...state,
       } 
     case FILTER_BY_TEMP: 
-      const filterTemp = state.dogsCopy.filter((b) => b.temperaments?.includes(payload))
+    console.log(payload)  
+    const filterTemp =  state.dogsCopy.filter((b) => b.temperaments?.includes(payload))
       return {
         ...state,
-        dogs: filterTemp
+        dogs: payload === "All" ? state.dogsCopy : filterTemp
       }
     case FILTER_BY_ORIGIN: 
       const filterBreeds = payload === "created"? 
@@ -78,13 +79,17 @@ function rootReducer(state = initialState, {type, payload}){
     case ORDER_BY_NAME:
       const orderByName = payload === "az" ?
        [...state.dogs].sort((a,b) => {
-        if(a.name > b.name) return 1;
-        if(a.name < b.name) return -1;
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        if(aName > bName) return 1;
+        if(aName < bName) return -1;
         return 0;
        }) :
        [...state.dogs].sort((a,b) => {
-        if(a.name > b.name) return -1;
-        if(a.name < b.name) return 1;
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        if(aName > bName) return -1;
+        if(aName < bName) return 1;
         return 0;
        });
        return {

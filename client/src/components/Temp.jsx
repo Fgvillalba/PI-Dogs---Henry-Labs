@@ -1,8 +1,9 @@
 import React from 'react';
+import './Temp.css'
 
 
 export default function Temp({temp}){
  return(
-   <span>{temp} </span>
+   <li className='temp'>{temp} </li>
  )
 }

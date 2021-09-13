@@ -21,7 +21,7 @@ function Home (){
 
  useEffect(() => {    
    dispatch(getDogs()); 
- },[dispatch]);
+ },[]);
 
  function handleReload(e){ 
    e.preventDefault();
@@ -31,7 +31,6 @@ function Home (){
 
  return (
     <div>  
-      <h1> DOG BREEDS APP </h1> 
       <button onClick={handleReload}>Reload</button> 
       <div>
         <SearchBar setActualPage={setActualPage}/>

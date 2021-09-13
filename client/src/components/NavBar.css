@@ -1,0 +1,28 @@
+
+ul {
+    margin-left: 2rem;
+}
+
+ul li {
+ list-style: none;
+ display: inline-block;   
+ margin-right: 3rem;
+}
+
+
+ul li a {
+ color: white;
+ font-size: 1.6rem;
+ text-decoration: none;
+ transition: .5s;
+}
+
+ul li a:hover {
+ color: #FEC260;
+}
+
+.active {
+    background-color: #A12568;
+    padding: 1rem;
+    border-radius: 4px;
+}

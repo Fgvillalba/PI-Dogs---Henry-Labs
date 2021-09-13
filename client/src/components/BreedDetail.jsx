@@ -5,15 +5,16 @@ import Temp from './Temp';
 
 
 
-export default function Card(props){
+export default function Card({match: { params: {id}}}){
  const dispatch = useDispatch();
+
  
  useEffect(() => {
-   dispatch(getById(props.match.params.id))
+   dispatch(getById(id))
    return () => {
     dispatch(clear())
   }
- },[dispatch,props]);   
+ },[]);   
 
  const breed = useSelector((state) => state.breedDetail);
 

@@ -22,7 +22,7 @@ export default function FilterTemp({title, setActualPage}){
     <div>
         <span>{title}</span>
         <select onChange={handleOnChange}>
-         {temps?.map((t) => (
+         {[{id:"All",  name: "All"}, ...temps].map((t) => (
           <option
            key = {t.id}
            value = {t.name}>
