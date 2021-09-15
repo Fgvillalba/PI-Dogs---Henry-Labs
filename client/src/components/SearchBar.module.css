@@ -12,6 +12,7 @@
     background-color: #ce8107; 
     backdrop-filter: blur(2px);
     outline:none;
+    transition: .5s;
 }
 
 .button:hover{

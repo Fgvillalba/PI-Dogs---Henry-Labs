@@ -19,7 +19,7 @@
 }
 
 .divInput input {
-    width: 100%;
+    width: 95%;
 }
 
 .inputsContainer {
@@ -73,6 +73,7 @@ h2 {
     border-radius: 14px;
     font-size: 14px;
     color: white;
+    transition: .5s;
 }
 
 .divCreate button:hover {

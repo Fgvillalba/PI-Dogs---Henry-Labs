@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Paged.css";
+import style from "./Paged.module.css";
 import { useDispatch, useSelector } from 'react-redux'; 
 import { setActualPage } from '../actions';
 
@@ -17,12 +17,11 @@ export default function Paged({breedsPerPage, breeds}){
   dispatch(setActualPage(Number(e.target.name)))
  }
   return (
-    <div className="container">
+    <div className={style.container}>
         {pages?.map((p) => (
-         <button className={`button-page ${actualPage === p? "selected": ""}`} key={p} name={p} onClick={handleSetPage}>{p}</button>  
+         <button className={`${style.buttonPage} ${actualPage === p? style.selected: ""}`} key={p} name={p} onClick={handleSetPage}>{p}</button>  
         ))}
     </div>
   )
 }
 
-//{`buttonPage ${actualPage === p? "selected": "" }`}

@@ -5,6 +5,7 @@
  border: 1px solid #d0d0d0;
  padding: 5px;
  margin-right: 0.5rem;
+ transition: .5s;
 }
 
 .buttons:hover {

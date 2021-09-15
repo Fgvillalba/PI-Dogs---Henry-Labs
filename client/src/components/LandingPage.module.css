@@ -29,6 +29,7 @@
     top: 350px;
     font-size: 40px;
     font-weight: 600;
+    transition: .5s;
     box-shadow: 3px 2px 19px -13px rgb(0 0 0 / 75%);
     -webkit-box-shadow: -5px 4px 3px 2px rgb(194 44 204 / 86%);
     -moz-box-shadow: 3px 2px 19px -13px rgb(0 0 0 / 75%);
