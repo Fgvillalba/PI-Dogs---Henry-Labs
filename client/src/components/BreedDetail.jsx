@@ -2,7 +2,8 @@ import {React, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getById, clear } from '../actions';
 import Temp from './Temp';
-import './BreedDetail.css'
+import style from './BreedDetail.module.css'
+import Spinner from "./Spinner";
 
 
 
@@ -20,16 +21,17 @@ export default function Card({match: { params: {id}}}){
  const breed = useSelector((state) => state.breedDetail);
 
   return(
-   <div className='container'>
+   <div className={style.container}>
        {breed? 
-       <div className='breedContainer'> 
+       <div className={style.breedContainer}> 
         <div>
-        <img src={breed.image} alt='Not found' width= '200px' height='200px'/>
+        <img src={breed.image} alt='Not found' width= '200px' height='190px'/>
         </div>
-        <div className='info'>
+        <div className={style.info}>
         <h3>{breed.name}</h3>
+        <div className={style.content}>
         <div>
-        <ul className='caracteristics'>
+        <ul className={style.caracteristics}>
         <li><span>Weight:</span> {breed.weight}</li>
         <li><span>Height:</span> {breed.height}</li>
         <li><span>Life Span:</span> {breed.life_span}</li>
@@ -37,14 +39,15 @@ export default function Card({match: { params: {id}}}){
         </div>
         <div>
         <h4>Temperaments:</h4> 
-         <ul className='contentTemp'>
+         <ul className={style.contentTemp}>
          {breed.temperaments?.map((t) => {
           return <Temp key={t} temp={t}/>    
          })}
          </ul>
         </div>
         </div>
-       </div> : <span> Cargando... </span> }
+        </div>
+       </div> : <Spinner /> }
    </div>
  )
 };

@@ -1,9 +1,10 @@
 import {React, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { getTemperaments, filterByTemp } from '../actions';
+import { getTemperaments, filterByTemp, setActualPage } from '../actions';
+import style from './Filters.module.css'
 
 
-export default function FilterTemp({title, setActualPage}){
+export default function FilterTemp({ title }){
  const dispatch = useDispatch();
  const temps = useSelector((state) => state.temperaments);
 
@@ -14,14 +15,14 @@ export default function FilterTemp({title, setActualPage}){
  function handleOnChange(e){
   e.preventDefault();
   dispatch(filterByTemp(e.target.value));
-  setActualPage(1);
+  dispatch(setActualPage(1));
 };
 
 
  return (
     <div>
-        <span>{title}</span>
-        <select onChange={handleOnChange}>
+        <span className={style.criterio}>{title}</span>
+        <select className={style.select} onChange={handleOnChange}>
          {[{id:"All",  name: "All"}, ...temps].map((t) => (
           <option
            key = {t.id}

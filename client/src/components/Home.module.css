@@ -1,0 +1,38 @@
+.topCointainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3rem 0 ;
+}
+
+.buttonsContainer {
+ display: flex;
+ flex-direction: row;
+}
+
+.filtersContainer {
+ align-items: center; 
+ display: flex;
+}
+
+.spanTitle {
+ font-weight: 700;
+}
+
+.reload {
+ border-radius: 14px;
+ background: 0;
+ justify-items: center ;
+ border: 1px solid #d0d0d0;
+ padding: 3px;
+ height: 27px;
+ width: 27px;
+}
+
+.reload:hover {
+  border: 1px solid #A12568;
+}
+
+.reload img {
+  width: 19px;
+}

@@ -1,3 +1,5 @@
+
+
 .cardContainer {
     padding: 2rem;
     border: 1px solid #d0d0d0;
@@ -26,6 +28,19 @@
     text-transform: uppercase;
     line-height: 1.5;
 }
+
+.cardContainer h4 {
+    color: #948e8e;
+    margin: 2rem 0;
+    font-weight: 500;
+}
+
+.cardContainer h4 span {
+    font-weight: 500;
+    color: black;
+    font-weight: 500;
+}
+
 .contentTemp{
     width: 100%;
     margin: 0;

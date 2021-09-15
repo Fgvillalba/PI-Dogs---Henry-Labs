@@ -23,6 +23,6 @@ ul li a:hover {
 
 .active {
     background-color: #A12568;
-    padding: 1rem;
-    border-radius: 4px;
+    padding: 0.7rem;
+    border-radius: 14px;
 }

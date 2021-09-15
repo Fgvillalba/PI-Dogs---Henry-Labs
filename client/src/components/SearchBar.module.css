@@ -1,0 +1,43 @@
+.container {
+    margin-left: 300px;
+}
+
+  
+.button {
+    color: whitesmoke;
+    border: none;
+    margin-left: 5px;
+    border-radius: 14px;
+    padding: 1rem;
+    background-color: #ce8107; 
+    backdrop-filter: blur(2px);
+    outline:none;
+}
+
+.button:hover{
+    background-color:  #F8485E5f;
+    backdrop-filter: blur(2px);
+}
+
+.button:focus {
+    outline: none;
+}
+
+
+
+.inputSearch{
+    border:none;
+    border-radius: 14px;
+    background-color: #766f7a8f;
+    border: none;
+    padding: 1rem;
+    color:white;
+    backdrop-filter: blur(1px);
+    outline: none;
+}
+
+.inputSearch::placeholder{
+    /* padding-left: 1rem; */
+    color:white;
+    font-weight: 400;
+}

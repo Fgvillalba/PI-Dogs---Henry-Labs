@@ -10,11 +10,11 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="App">
+      <Route exact path="/" component={LandingPage} />
       <header>
-        <Route path="/" component={Header} />
+        <Route path={["/home", "/dog"]} component={Header} />
       </header>
       <main>
-        <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/dog/:id" component={BreedDetail} />
         <Route exact path="/dog" component={CreateBreed} />

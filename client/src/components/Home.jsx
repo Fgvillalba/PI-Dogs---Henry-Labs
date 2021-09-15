@@ -1,19 +1,21 @@
+import style from './Home.module.css'
+import reload from '../images/reload.svg'
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector} from 'react-redux'; 
-import { getDogs } from '../actions';
+import { getDogs, setActualPage } from '../actions';
 import Cards from './Cards';
 import Paged from "./Paged";
 import FilterTemp from "./FilterTemp";
 import FilterOrigin from "./FilterOrigin";
-import SearchBar from "./SearchBar";
 import Order from "./Order";
+
 
 function Home (){
  const dispatch = useDispatch();
  const dogs = useSelector((state) => state.dogs);  
+ const actualPage = useSelector((state) => state.actualPage);
  
- //Paginado
- const [actualPage, setActualPage] = useState(1);
+
  const breedsPerPage = 8;
  const lastBreed = actualPage * breedsPerPage;
  const firstBreed = lastBreed - breedsPerPage;
@@ -26,20 +28,25 @@ function Home (){
  function handleReload(e){ 
    e.preventDefault();
    dispatch(getDogs());
-   setActualPage(1);
+   dispatch(setActualPage(1));
  };
 
+ 
  return (
     <div>  
-      <button onClick={handleReload}>Reload</button> 
-      <div>
-        <SearchBar setActualPage={setActualPage}/>
-        <Order setActualPage={setActualPage}/>
-        <FilterOrigin title='Filter by origin' setActualPage={setActualPage}/>
-        <FilterTemp title='Filter by Temperament' setActualPage={setActualPage}/>
-        <Paged breedsPerPage={breedsPerPage} breeds={dogs.length} setActualPage={setActualPage} actualPage={actualPage} />
-        <Cards dogs={dogsPaged}/>
+      <div className={style.topCointainer}>
+       <div className={style.buttonsContainer}>
+        <Order />
+        <button className={style.reload} onClick={handleReload}><img src={reload} alt='reload icon'/></button> 
+       </div>
+       <div className={style.filtersContainer}>
+        <span className={style.spanTitle}>Filter by </span>
+        <FilterOrigin title='Origin'/>
+        <FilterTemp title='Temperament' />
+       </div>
       </div>
+        <Paged breedsPerPage={breedsPerPage} breeds={dogs.length} />
+        <Cards dogs={dogsPaged}/>
     </div>
  )
 };

@@ -1,7 +1,8 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'; 
 import { useHistory } from 'react-router-dom'
-import { postBreed } from '../actions';
+import { getTemperaments, postBreed } from '../actions';
+import style from './CreateBreed.module.css'
 
 
 
@@ -22,7 +23,11 @@ export default function CreateBreed(){
    image: '',
    temperaments: [],
  });  
-
+ 
+ useEffect(() => {    
+  dispatch(getTemperaments()); 
+},[]);
+ 
  function handleInput(e) {
     setData({
       ...data,
@@ -82,41 +87,61 @@ export default function CreateBreed(){
     });
   };
 
-  console.log("errors", errors)
 
  return (
-        <div>
-            <h1>Create your breed:</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name:  </label>
-                    <input type="text" name='name' value={data.name} onChange={handleInput}/>
+        <div className={style.container}> 
+            <h2>Create Breed</h2>
+            <form className={style.formContainer} onSubmit={handleSubmit}> 
+                <div className={style.divInput} >
+                    <input 
+                    type="text" name='name' value={data.name}
+                    onChange={handleInput} placeholder='Name'/>
+                    {errors.name && <p className={style.errorMessage}>{errors.name}</p>}
                 </div>
-                <div>
-                    <label>Weight min:  </label>
-                    <input type="number" name='weightMin' value={data.weightMin} onChange={handleInput} />
-                    <label> max:  </label>
-                    <input type="number" name='weightMax' value={data.weightMax} onChange={handleInput} />
+                <div className={style.inputsContainer}>
+                    <div>
+                      <input type="number" name='weightMin' value={data.weightMin}
+                      onChange={handleInput} placeholder='Weight min' />
+                      {errors.weightMin && <p className={style.errorMessage}>{errors.weightMin}</p>}
+                    </div>
+                    <div className={style.divRight}>
+                      <input type="number" name='weightMax' value={data.weightMax}
+                      onChange={handleInput} placeholder='Weight max'/>
+                      {errors.weightMax && <p className={style.errorMessage}>{errors.weightMax}</p>}
+                    </div>
                 </div>
-                <div>
-                    <label>Height min:  </label>
-                    <input type="number" name='heightMin' value={data.heightMin} onChange={handleInput} />
-                    <label> max:  </label>
-                    <input type="number" name='heightMax' value={data.heightMax} onChange={handleInput} />
+                <div className={style.inputsContainer}>
+                    <div>
+                      <input type="number" name='heightMin' value={data.heightMin}
+                      onChange={handleInput} placeholder='Height min'/>
+                      {errors.heightMin && <p className={style.errorMessage}>{errors.heightMin}</p>}
+                    </div> 
+                    <div className={style.divRight}> 
+                      <input type="number" name='heightMax' value={data.heightMax} 
+                      onChange={handleInput} placeholder='Height max'/>
+                      {errors.heightMax && <p className={style.errorMessage}>{errors.heightMax}</p>}
+                    </div> 
                 </div>
-                <div>
-                    <label>Life span min:  </label>
-                    <input type="number" name='life_spanMin' value={data.life_spanMin} onChange={handleInput} />
-                    <label> max:  </label>
-                    <input type="number" name='life_spanMax' value={data.life_spanMax} onChange={handleInput} />
+                <div className={style.inputsContainer}>
+                    <div>
+                      <input type="number" name='life_spanMin' value={data.life_spanMin} 
+                      onChange={handleInput} placeholder='Life span min' />
+                      {errors.life_spanMin && <p className={style.errorMessage}>{errors.life_spanMin}</p>}
+                    </div> 
+                    <div className={style.divRight}>
+                      <input type="number" name='life_spanMax' value={data.life_spanMax} 
+                      onChange={handleInput} placeholder='Life span max'/>
+                      {errors.life_spanMax && <p className={style.errorMessage}>{errors.life_spanMax}</p>}
+                    </div> 
                 </div>
-                <div>
-                    <label>Image:  </label>
-                    <input type="text" name='image' value={data.image} onChange={handleInput} placeholder="url"/>
+                <div className={style.divInput} >
+                    <input type="text" name='image' value={data.image}
+                    onChange={handleInput} placeholder="Image url"/>
+                    {errors.image && <p className={style.errorMessage}>{errors.image}</p>}
                 </div>
-                <div>
-                    <label>Select temperaments: </label>
-                    <select onChange={handleSelect}>
+                <div className={style.divSelectTems}>
+                    <label>Select <span>temperaments</span></label>
+                    <select className ={style.selectTemps} onChange={handleSelect}>
                       {[{id: " ", name: " "} ,...temperaments].map((t) => (
                         <option
                           key = {t.id}
@@ -125,16 +150,18 @@ export default function CreateBreed(){
                         </option>
                       ))}
                     </select>
-                    <div>
+                    <div className={style.divContainerTempsSelected}>
                        {data.temperaments?.map((t) => 
-                         <label key={t}>
-                         <button name={t} onClick={onClick}>x</button>
-                         {t}  
-                         </label> 
+                         <div key={t} className={style.tempsContainer}>
+                         <button className={style.tempsContainerButton} name={t} onClick={onClick}>x</button>
+                         {t}
+                         </div>
                        )} 
                     </div>
                 </div>
-                <button type="submit" >CREATE</button>
+                <div className={style.divCreate}>
+                  <button type="submit" >CREATE</button>
+                </div>
             </form>
         </div>
  )

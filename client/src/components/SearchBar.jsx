@@ -1,9 +1,11 @@
 import { React, useState} from "react";
 import { useDispatch} from 'react-redux';
-import { getByName } from "../actions";
+import { getByName, setActualPage } from "../actions";
+import style from  './SearchBar.module.css';
 
 
-export default function SearchBar({setActualPage}){
+
+export default function SearchBar(){
  const dispatch = useDispatch();   
  const[input, setInput] = useState(""); 
     
@@ -15,13 +17,13 @@ export default function SearchBar({setActualPage}){
   e.preventDefault();
   dispatch(getByName(input)); 
   setInput("");
-  setActualPage(1); 
+  dispatch(setActualPage(1));
  };
 
  return (
-    <div>
-        <input value= {input} type ="text" placeholder="By Breed..." autoComplete = "off" onChange= {handleInputChange}/>
-        <button type="submit" onClick={handleSubmit} >SEARCH</button>
+    <div className={style.container}>
+        <input className={style.inputSearch} value= {input} type ="text" placeholder="By Breed..." autoComplete = "off" onChange= {handleInputChange}/>
+        <button className={style.button} type="submit" onClick={handleSubmit} >SEARCH</button>
     </div>
  )
-}
+};

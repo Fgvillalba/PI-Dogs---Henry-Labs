@@ -4,18 +4,19 @@ import './NavBar.css';
 
 
 export default function NavBar() {
+
   return (
     <nav>
       <ul>
         <li>
-          <NavLink  activeStyle={{fontWeight: "700"}} to='/home'>
+          <NavLink  activeStyle={{fontWeight: "500"}} exact to='/home'>
             Home    
-        </NavLink>
+          </NavLink>
         </li>
         <li>
-        <NavLink activeStyle={{fontWeight: "700"}} to='/dog'>
-        Create Breed
-        </NavLink>
+          <NavLink activeStyle={{fontWeight: "500"}} exact to='/dog'>
+           Create Breed
+          </NavLink>
         </li>
       </ul>
     </nav>

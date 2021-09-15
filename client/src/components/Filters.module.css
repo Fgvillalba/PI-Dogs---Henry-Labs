@@ -1,0 +1,11 @@
+.criterio {
+   color: #A12568 ;
+   font-size: 12px;
+   margin-left: 1rem;
+   margin-right: .5rem;
+}
+
+.select {
+    padding: .3rem;
+    border-radius: 14px;
+}

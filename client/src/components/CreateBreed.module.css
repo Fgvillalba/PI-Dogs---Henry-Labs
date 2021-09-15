@@ -1,0 +1,144 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formContainer {
+    width: 60%;
+    padding: 3rem;
+    border: 1px solid #A12568;
+    border-radius: 14px;
+    margin: 1.5rem 0;
+}
+
+.divInput {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.divInput input {
+    width: 100%;
+}
+
+.inputsContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.inputsContainer div {
+    width: 50%;
+}
+
+.inputsContainer div input {
+    width: 90%;
+}
+
+.divRight {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border-radius: 14px;
+    border: 1px solid #A12568;
+    padding: 1rem;
+    font-size: 14px;
+}
+
+h2 {
+    color: #3B185F;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    align-self: flex-start;
+    margin-left: 16%;
+}
+
+.divCreate {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.divCreate button {
+    background-color: #A12568;
+    align-self: center;
+    border: none; 
+    padding: 1rem;
+    margin-top: 2rem ;
+    margin-bottom: 0;
+    border-radius: 14px;
+    font-size: 14px;
+    color: white;
+}
+
+.divCreate button:hover {
+   background-color: #FEC260;
+   color: #A12568;
+}
+
+.divSelectTems {
+    width: 100%;
+}
+
+.divSelectTems label {
+    font-size: 16px;
+    color: #2A0944;
+    font-weight: 500;
+    margin-right: 2rem;
+}
+
+.divSelectTems span {
+    color: #948e8e;
+}
+
+
+.selectTemps {
+    padding: 1rem;
+    border-radius: 14px;
+    border: 1px solid #A12568;
+}
+
+.divContainerTempsSelected {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.tempsContainer {
+    border-radius: 14px;
+    border: 1px solid #A12568;
+    width: fit-content;
+    margin: 0.7rem;
+    padding: 0.6rem;
+    font-size: 10px;
+}
+
+
+.tempsContainerButton {
+    background-color: #A12568;
+    align-self: center;
+    height: 16px;
+    width: 16px;
+    border: none;
+    border-radius: 14px;
+    font-size: 9px;
+    color: white;
+    margin-right: .5rem;
+    padding: 3px;
+}
+
+.errorMessage {
+    font-size: 10px;
+    color: white;
+    background: #ec5e5e;
+    padding: 0.3rem;
+    border-radius: 14px;
+    width: fit-content;
+    margin-bottom: 0;
+}
+

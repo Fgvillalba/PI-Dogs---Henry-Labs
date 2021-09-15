@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     padding: 3rem;
+    margin-top: 10rem;
 }
 
 .breedContainer {
@@ -48,9 +49,14 @@
     flex-wrap: wrap;
 }
 
+.content {
+    display: flex;
+}
+
 .caracteristics {
     margin: 0;
     padding: 0;
+    width: 25rem;
 }
 
 .caracteristics li {

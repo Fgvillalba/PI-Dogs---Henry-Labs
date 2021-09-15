@@ -1,4 +1,4 @@
-h1{
+ .logo{
  font-size: 0;    
  width: 64px;
  height: 64px;
@@ -12,6 +12,7 @@ section {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem;
     min-width: 1024px;
 }
