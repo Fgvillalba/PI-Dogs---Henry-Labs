@@ -1,6 +1,6 @@
 import style from './Home.module.css'
 import reload from '../images/reload.svg'
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import { useDispatch, useSelector} from 'react-redux'; 
 import { getDogs, setActualPage } from '../actions';
 import Cards from './Cards';

@@ -3,7 +3,7 @@ const { Router } = require("express");
 const axios = require("axios");
 const { Dog, Temperament } = require("../db");
 const { API_KEY } = process.env;
-const { breedsOfApi, breedsOfDB } = require("./getters");
+const { breedsOfApi, breedsOfDB, temperamentsOfApi } = require("./getters");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -12,39 +12,8 @@ const router = Router();
 //GET Razas && Query by Name//
 router.get("/dogs", async (req, res) => {
   const race = req.query.name;
-  //  const apiInfo = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-  //  const infoRes =  apiInfo.data.map(raza => {
-  //   return {
-  //       id: raza.id,
-  //       name: raza.name,
-  //       weight: raza.weight.metric.includes("NaN")? "15 - 25" : raza.weight.metric,
-  //       temperaments: raza.temperament?.replace(/ /g, '').split(','),
-  //       image: raza.image.url,
-  //   }
-  //  });
   const infoRes = await breedsOfApi();
-
-  // const infoDataBase = await Dog.findAll({
-  //   attributes: ["id", "name", "weight", "image", "createdAt"],
-  //   include: [
-  //     {
-  //       model: Temperament,
-  //       attributes: ["name"],
-  //       through: {
-  //         attributes: [],
-  //       },
-  //     },
-  //   ],
-  // });
-  // const dataInfo = infoDataBase.map((breed) => {
-  //   return {
-  //     ...breed.get(),
-  //     temperaments: breed.temperaments.map((t) => t.name),
-  //   };
-  // });
-
   const dataInfo = await breedsOfDB();
-
   const info = infoRes.concat(dataInfo);
 
   if (race) {
@@ -63,51 +32,7 @@ router.get("/dogs", async (req, res) => {
 //GET Raza por ID//
 router.get("/dogs/:idRaza", async (req, res) => {
   const id = req.params.idRaza;
-  // const apiInfo = await axios.get(
-  //   `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
-  // );
-  // const infoRes = apiInfo.data.map((raza) => {
-  //   return {
-  //     id: raza.id,
-  //     name: raza.name,
-  //     height: raza.height.metric,
-  //     weight: raza.weight.metric,
-  //     temperaments: raza.temperament?.replace(/ /g, "").split(","),
-  //     image: raza.image.url,
-  //     life_span: raza.life_span,
-  //   };
-  // });
-
   const infoRes = await breedsOfApi();
-
-  // const infoDataBase = await Dog.findAll({
-  //   attributes: [
-  //     "id",
-  //     "name",
-  //     "weight",
-  //     "image",
-  //     "height",
-  //     "life_span",
-  //     "createdAt",
-  //   ],
-  //   include: [
-  //     {
-  //       model: Temperament,
-  //       attributes: ["name"],
-  //       through: {
-  //         attributes: [],
-  //       },
-  //     },
-  //   ],
-  // });
-
-  // const dataInfo = infoDataBase.map((breed) => {
-  //   return {
-  //     ...breed.get(),
-  //     temperaments: breed.temperaments.map((t) => t.name),
-  //   };
-  // });
-
   const dataInfo = await breedsOfDB();
 
   const info = infoRes.concat(dataInfo);
@@ -125,20 +50,9 @@ router.get("/temperament", async function (req, res) {
   if (dataTemps.length) {
     res.status(200).json(dataTemps);
   } else {
-    const apiInfo = await axios.get(
-      `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
-    );
-    apiInfo.data.forEach((element) => {
-      const temp = element.temperament?.split(",");
-      temp?.forEach((t) => {
-        Temperament.findOrCreate({
-          where: {
-            name: t.replace(" ", ""),
-          },
-        });
-      });
-    });
+    await temperamentsOfApi();
     const dataTemps = await Temperament.findAll();
+
     res.status(200).json(dataTemps);
   }
 });

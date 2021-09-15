@@ -58,9 +58,20 @@ async function temperamentsOfApi() {
   const apiInfo = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
+  apiInfo.data.forEach((element) => {
+    const temp = element.temperament?.split(",");
+    temp?.forEach((t) => {
+      Temperament.findOrCreate({
+        where: {
+          name: t.replace(" ", ""),
+        },
+      });
+    });
+  });
 }
 
 module.exports = {
   breedsOfApi,
   breedsOfDB,
+  temperamentsOfApi,
 };
