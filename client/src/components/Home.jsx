@@ -2,12 +2,14 @@ import style from './Home.module.css'
 import reload from '../images/reload.svg'
 import { React, useEffect } from "react";
 import { useDispatch, useSelector} from 'react-redux'; 
-import { getDogs, setActualPage } from '../actions';
+import { getDogs, setActualPage, clear } from '../actions';
 import Cards from './Cards';
 import Paged from "./Paged";
 import FilterTemp from "./FilterTemp";
 import FilterOrigin from "./FilterOrigin";
 import Order from "./Order";
+
+
 
 
 function Home (){
@@ -23,6 +25,9 @@ function Home (){
 
  useEffect(() => {    
    dispatch(getDogs()); 
+    return () => {
+    dispatch(clear())
+  }
  },[]);
 
  function handleReload(e){ 

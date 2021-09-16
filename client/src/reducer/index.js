@@ -107,6 +107,7 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         breedDetail: undefined,
+        dogs: [],
       };
     case SET_ACTUAL_PAGE:
       return {
