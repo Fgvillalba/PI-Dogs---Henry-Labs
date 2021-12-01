@@ -1,31 +1,30 @@
 .container {
-    display: flex;
-    justify-content: flex-end;
+	display: flex;
+	justify-content: flex-end;
+	padding: 1rem 0;
 }
 
 .buttonPage {
-  background: 0;
-  border: 1px solid #d0d0d0 ;
-  border-radius: 14px;
-  text-align: center;
-  width: 25px;
-  height: 25px;
-  margin: 3px;
-  padding: 5px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #A12568;
-  transition: .5s;
+	background: 0;
+	border: 1px solid #d0d0d0;
+	border-radius: 14px;
+	text-align: center;
+	width: 25px;
+	height: 25px;
+	margin: 3px;
+	padding: 5px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #a12568;
+	transition: 0.5s;
 }
 
 .buttonPage:hover {
-    color: #A12568;
-    border: 1px solid #A12568;
-} 
+	color: #a12568;
+	border: 1px solid #a12568;
+}
 
 .selected {
-    color: #A12568;
-    border: 1px solid #A12568;
+	color: #a12568;
+	border: 1px solid #a12568;
 }
- 
-

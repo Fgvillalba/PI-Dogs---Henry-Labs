@@ -1,18 +1,19 @@
- .logo{
- font-size: 0;    
- width: 64px;
- height: 64px;
- background-image: url('../images/logo.png') ;
- background-size: cover;
- background-position: center;
- border-radius: 80%;
+.logo {
+	font-size: 0;
+	width: 64px;
+	height: 64px;
+	background-image: url("../images/logo.png");
+	background-size: cover;
+	background-position: center;
+	border-radius: 80%;
+	margin: 0;
 }
 
 section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    min-width: 1024px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 0;
+	min-width: 1024px;
 }

@@ -1,145 +1,148 @@
 .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
 .formContainer {
-    width: 60%;
-    padding: 3rem;
-    border: 1px solid #A12568;
-    border-radius: 14px;
-    margin: 1.5rem 0;
+	width: 60%;
+	padding: 3rem;
+	border: 1px solid #a12568;
+	border-radius: 14px;
+	margin: 1.5rem 0;
 }
 
 .divInput {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	/* margin-bottom: 1.2rem; */
 }
 
 .divInput input {
-    width: 95%;
+	width: 95%;
 }
 
 .inputsContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+	display: flex;
+	justify-content: space-between;
+	/* margin-bottom: 2rem; */
 }
 
 .inputsContainer div {
-    width: 50%;
+	width: 50%;
 }
 
 .inputsContainer div input {
-    width: 90%;
+	width: 90%;
 }
 
 .divRight {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
 }
 
 input {
-    border-radius: 14px;
-    border: 1px solid #A12568;
-    padding: 1rem;
-    font-size: 14px;
+	border-radius: 14px;
+	border: 1px solid #a12568;
+	padding: 1rem;
+	font-size: 14px;
 }
 
 h2 {
-    color: #3B185F;
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-    align-self: flex-start;
-    margin-left: 16%;
+	color: #3b185f;
+	margin-top: 1.5rem;
+	margin-bottom: 0;
+	align-self: flex-start;
+	margin-left: 16%;
 }
 
 .divCreate {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 0;
 }
 
 .divCreate button {
-    background-color: #A12568;
-    align-self: center;
-    border: none; 
-    padding: 1rem;
-    margin-top: 2rem ;
-    margin-bottom: 0;
-    border-radius: 14px;
-    font-size: 14px;
-    color: white;
-    transition: .5s;
+	background-color: #a12568;
+	align-self: center;
+	border: none;
+	padding: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 0;
+	border-radius: 14px;
+	font-size: 14px;
+	color: white;
+	transition: 0.5s;
 }
 
 .divCreate button:hover {
-   background-color: #FEC260;
-   color: #A12568;
+	background-color: #fec260;
+	color: #a12568;
 }
 
 .divSelectTems {
-    width: 100%;
+	width: 100%;
 }
 
 .divSelectTems label {
-    font-size: 16px;
-    color: #2A0944;
-    font-weight: 500;
-    margin-right: 2rem;
+	font-size: 16px;
+	color: #2a0944;
+	font-weight: 500;
+	margin-right: 2rem;
 }
 
 .divSelectTems span {
-    color: #948e8e;
+	color: #948e8e;
 }
 
-
 .selectTemps {
-    padding: 1rem;
-    border-radius: 14px;
-    border: 1px solid #A12568;
+	padding: 1rem;
+	border-radius: 14px;
+	border: 1px solid #a12568;
 }
 
 .divContainerTempsSelected {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: flex-start;
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: flex-start;
 }
-
 
 .tempsContainer {
-    border-radius: 14px;
-    border: 1px solid #A12568;
-    width: fit-content;
-    margin: 0.7rem;
-    padding: 0.6rem;
-    font-size: 10px;
+	border-radius: 14px;
+	border: 1px solid #a12568;
+	width: fit-content;
+	margin: 0.7rem;
+	padding: 0.6rem;
+	font-size: 10px;
 }
 
-
 .tempsContainerButton {
-    background-color: #A12568;
-    align-self: center;
-    height: 16px;
-    width: 16px;
-    border: none;
-    border-radius: 14px;
-    font-size: 9px;
-    color: white;
-    margin-right: .5rem;
-    padding: 3px;
+	background-color: #a12568;
+	align-self: center;
+	height: 16px;
+	width: 16px;
+	border: none;
+	border-radius: 14px;
+	font-size: 9px;
+	color: white;
+	margin-right: 0.5rem;
+	padding: 3px;
 }
 
 .errorMessage {
-    font-size: 10px;
-    color: white;
-    background: #ec5e5e;
-    padding: 0.3rem;
-    border-radius: 14px;
-    width: fit-content;
-    margin-bottom: 0;
+	/* padding-top: 0.6rem; */
+	padding-bottom: 0;
+	padding-left: 1.1rem;
+	font-size: 12px;
+	color: red;
+	width: fit-content;
+	margin: 0;
+	height: 19px;
+	display: flex;
+	align-items: center;
 }
 
+.noError {
+	height: 18px;
+}

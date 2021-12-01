@@ -48,7 +48,6 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
       };
     case FILTER_BY_TEMP:
-      console.log(payload);
       const filterTemp = state.dogsCopy.filter((b) =>
         b.temperaments?.includes(payload)
       );
