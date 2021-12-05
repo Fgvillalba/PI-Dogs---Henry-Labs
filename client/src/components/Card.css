@@ -4,7 +4,7 @@
 
 .cardContainer {
 	padding: 2rem;
-	border: 1px solid #d0d0d0;
+	/* border: 1px solid #d0d0d0; */
 	border-radius: 20px;
 	width: 200px;
 	height: 87%;
@@ -13,9 +13,12 @@
 	justify-content: flex-start;
 	align-items: center;
 	margin-bottom: 2rem;
-	box-shadow: 3px 2px 19px -13px rgb(0 0 0 / 75%);
-	-webkit-box-shadow: 3px 2px 19px -13px rgb(0 0 0 / 75%);
-	-moz-box-shadow: 3px 2px 19px -13px rgb(0 0 0 / 75%);
+	background: linear-gradient(
+		179deg,
+		rgba(161, 37, 104, 0.7) -20%,
+		#fec160bd 100%
+	);
+	box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 .cardContainer:hover {
@@ -24,10 +27,10 @@
 
 .cardContainer img {
 	border-radius: 80%;
+	box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 .cardContainer h3 {
-	/* text-decoration: none; */
 	display: flex;
 	justify-content: center;
 	text-transform: uppercase;
@@ -40,7 +43,7 @@
 }
 
 .cardContainer h4 {
-	color: #948e8e;
+	color: #ffffff;
 	margin: 2rem 0;
 	font-weight: 500;
 }
@@ -49,6 +52,7 @@
 	font-weight: 500;
 	color: black;
 	font-weight: 500;
+	margin-right: 0.5rem;
 }
 
 .contentTemp {

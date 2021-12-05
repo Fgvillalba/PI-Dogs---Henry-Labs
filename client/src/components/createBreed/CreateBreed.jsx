@@ -1,31 +1,32 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getTemperaments, postBreed } from "../actions";
+import { getTemperaments, postBreed } from "../../actions";
 import style from "./CreateBreed.module.css";
+import { validateSubmit, validateOnChange } from "./helpers";
+
+const initialDataForm = {
+	name: "",
+	weightMin: "",
+	weightMax: "",
+	heightMin: "",
+	heightMax: "",
+	life_spanMin: "",
+	life_spanMax: "",
+	image: "",
+	temperaments: [],
+};
 
 export default function CreateBreed() {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const temperaments = useSelector(
-		(state) => state.temperaments
-	);
+	const temperaments = useSelector((state) => state.temperaments);
 	const [errors, setErrors] = useState({});
-	const [data, setData] = useState({
-		name: "",
-		weightMin: "",
-		weightMax: "",
-		heightMin: "",
-		heightMax: "",
-		life_spanMin: "",
-		life_spanMax: "",
-		image: "",
-		temperaments: [],
-	});
+	const [data, setData] = useState(initialDataForm);
 
 	useEffect(() => {
 		dispatch(getTemperaments());
-	}, []);
+	}, [dispatch]);
 
 	function handleInput(e) {
 		setData({
@@ -33,12 +34,7 @@ export default function CreateBreed() {
 			[e.target.name]: e.target.value,
 		});
 
-		setErrors(
-			validate({
-				...data,
-				[e.target.name]: e.target.value,
-			})
-		);
+		setErrors(validateOnChange(e.target, errors));
 	}
 
 	function handleSelect(e) {
@@ -46,10 +42,7 @@ export default function CreateBreed() {
 			if (!data.temperaments.includes(e.target.value)) {
 				setData({
 					...data,
-					temperaments: [
-						...data.temperaments,
-						e.target.value,
-					],
+					temperaments: [...data.temperaments, e.target.value],
 				});
 			}
 		}
@@ -57,33 +50,19 @@ export default function CreateBreed() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		if (Object.keys(errors).length === 0) {
+		setErrors(validateSubmit(data));
+		if (Object.keys(validateSubmit(data)).length === 0) {
 			dispatch(
 				postBreed({
 					...data,
-					weight:
-						data.weightMin + " - " + data.weightMax,
-					height:
-						data.heightMin + " - " + data.heightMax,
+					weight: data.weightMin + " - " + data.weightMax,
+					height: data.heightMin + " - " + data.heightMax,
 					life_span:
-						data.life_spanMin +
-						" - " +
-						data.life_spanMax +
-						" years",
+						data.life_spanMin + " - " + data.life_spanMax + " years",
 				})
 			);
-			setData({
-				name: "",
-				weightMin: "",
-				weightMax: "",
-				heightMin: "",
-				heightMax: "",
-				life_spanMin: "",
-				life_spanMax: "",
-				image: "",
-				temperaments: [],
-			});
-			alert("created sucesfully");
+			setData(initialDataForm);
+			alert("Breed created sucesfully");
 			history.push("/home");
 		} else {
 			alert("complete inputs");
@@ -102,11 +81,10 @@ export default function CreateBreed() {
 
 	return (
 		<div className={style.container}>
-			<h2>Create Breed</h2>
-			<form
-				className={style.formContainer}
-				onSubmit={handleSubmit}
-			>
+			<div className={style.title}>
+				<h2>Create your own breed</h2>
+			</div>
+			<form className={style.formContainer} onSubmit={handleSubmit}>
 				<div className={style.divInput}>
 					<input
 						type="text"
@@ -117,9 +95,7 @@ export default function CreateBreed() {
 						autoComplete="off"
 					/>
 					{errors.name ? (
-						<p className={style.errorMessage}>
-							{errors.name}
-						</p>
+						<p className={style.errorMessage}>{errors.name}</p>
 					) : (
 						<div className={style.noError}></div>
 					)}
@@ -135,9 +111,7 @@ export default function CreateBreed() {
 							autoComplete="off"
 						/>
 						{errors.weightMin ? (
-							<p className={style.errorMessage}>
-								{errors.weightMin}
-							</p>
+							<p className={style.errorMessage}>{errors.weightMin}</p>
 						) : (
 							<div className={style.noError}></div>
 						)}
@@ -152,9 +126,7 @@ export default function CreateBreed() {
 							autoComplete="off"
 						/>
 						{errors.weightMax ? (
-							<p className={style.errorMessage}>
-								{errors.weightMax}
-							</p>
+							<p className={style.errorMessage}>{errors.weightMax}</p>
 						) : (
 							<div className={style.noError}></div>
 						)}
@@ -171,9 +143,7 @@ export default function CreateBreed() {
 							autoComplete="off"
 						/>
 						{errors.heightMin ? (
-							<p className={style.errorMessage}>
-								{errors.heightMin}
-							</p>
+							<p className={style.errorMessage}>{errors.heightMin}</p>
 						) : (
 							<div className={style.noError}></div>
 						)}
@@ -188,9 +158,7 @@ export default function CreateBreed() {
 							autoComplete="off"
 						/>
 						{errors.heightMax ? (
-							<p className={style.errorMessage}>
-								{errors.heightMax}
-							</p>
+							<p className={style.errorMessage}>{errors.heightMax}</p>
 						) : (
 							<div className={style.noError}></div>
 						)}
@@ -242,9 +210,7 @@ export default function CreateBreed() {
 						autoComplete="off"
 					/>
 					{errors.image ? (
-						<p className={style.errorMessage}>
-							{errors.image}
-						</p>
+						<p className={style.errorMessage}>{errors.image}</p>
 					) : (
 						<div className={style.noError}></div>
 					)}
@@ -257,23 +223,15 @@ export default function CreateBreed() {
 						className={style.selectTemps}
 						onChange={handleSelect}
 					>
-						{[
-							{ id: " ", name: " " },
-							...temperaments,
-						].map((t) => (
+						{[{ id: " ", name: " " }, ...temperaments].map((t) => (
 							<option key={t.id} value={t.name}>
 								{t.name}
 							</option>
 						))}
 					</select>
-					<div
-						className={style.divContainerTempsSelected}
-					>
+					<div className={style.divContainerTempsSelected}>
 						{data.temperaments?.map((t) => (
-							<div
-								key={t}
-								className={style.tempsContainer}
-							>
+							<div key={t} className={style.tempsContainer}>
 								<button
 									className={style.tempsContainerButton}
 									name={t}
@@ -292,61 +250,4 @@ export default function CreateBreed() {
 			</form>
 		</div>
 	);
-}
-
-function validate(data) {
-	let errors = {};
-	if (!data.name) errors.name = "Name is required.";
-	if (!data.weightMin) {
-		errors.weightMin = "Weight min is required.";
-	} else if (Number(data.weightMin) <= 0) {
-		errors.weightMin =
-			"Weight min must be greater than 0.";
-	}
-	if (!data.weightMax) {
-		errors.weightMax = "Weight max is required.";
-	} else if (
-		Number(data.weightMax) <= Number(data.weightMin)
-	) {
-		errors.weightMax =
-			"Weight max must be greater than weight min.";
-	}
-	if (!data.heightMin) {
-		errors.heightMin = "Height min is required.";
-	} else if (Number(data.heightMin <= 0)) {
-		errors.heightMin =
-			"Height min must be greater than 0.";
-	}
-	if (!data.heightMax) {
-		errors.heightMax = "Height max is required.";
-	} else if (
-		Number(data.heightMax) <= Number(data.heightMin)
-	) {
-		errors.heightMax =
-			"Height max must be greater than height min.";
-	}
-	if (!data.life_spanMin) {
-		errors.life_spanMin = "Life span min is required.";
-	} else if (Number(data.life_spanMin) <= 0) {
-		errors.life_spanMin =
-			"Life span min must be greater than 0.";
-	}
-	if (!data.life_spanMax) {
-		errors.life_spanMax = "Life span max is required.";
-	} else if (
-		Number(data.life_spanMax) <=
-		Number(data.life_spanMin)
-	) {
-		errors.life_spanMax =
-			"Life span max must be greater than life span min.";
-	}
-	if (!data.image) {
-		errors.image = "Image url is required";
-	} else if (
-		!/^(ftp|http|https):\/\/[^ "]+$/.test(data.image)
-	) {
-		errors.image = "Image url is invalid.";
-	}
-
-	return errors;
 }

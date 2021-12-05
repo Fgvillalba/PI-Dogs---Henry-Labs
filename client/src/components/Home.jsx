@@ -17,6 +17,9 @@ import Spinner from "./Spinner";
 function Home() {
 	const dispatch = useDispatch();
 	const dogs = useSelector((state) => state.dogs);
+	const searchedBreeds = useSelector(
+		(state) => state.searchedBreeds
+	);
 	const actualPage = useSelector(
 		(state) => state.actualPage
 	);
@@ -27,11 +30,13 @@ function Home() {
 	const dogsPaged = dogs.slice(firstBreed, lastBreed);
 
 	useEffect(() => {
-		dispatch(getDogs());
+		if (!searchedBreeds) {
+			dispatch(getDogs());
+		}
 		return () => {
 			dispatch(clear());
 		};
-	}, []);
+	}, [dispatch]);
 
 	function handleReload(e) {
 		e.preventDefault();

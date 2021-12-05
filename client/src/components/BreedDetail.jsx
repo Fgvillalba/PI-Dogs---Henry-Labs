@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getById, clear } from "../actions";
+import { getById, clearBreedDetail } from "../actions";
 import Temp from "./Temp";
 import style from "./BreedDetail.module.css";
 import Spinner from "./Spinner";
@@ -15,9 +15,9 @@ export default function Card({
 	useEffect(() => {
 		dispatch(getById(id));
 		return () => {
-			dispatch(clear());
+			dispatch(clearBreedDetail());
 		};
-	}, []);
+	}, [dispatch, id]);
 
 	const breed = useSelector(
 		(state) => state.breedDetail

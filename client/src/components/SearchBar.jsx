@@ -1,22 +1,32 @@
 import { React, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	useLocation,
+	useHistory,
+} from "react-router-dom";
 import { getByName, setActualPage } from "../actions";
 import style from "./SearchBar.module.css";
 import searchIcon from "../images/search2.png";
 
 export default function SearchBar() {
+	const { pathname } = useLocation();
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const [input, setInput] = useState("");
+	const searchedBreeds = useSelector(
+		(state) => state.searchedBreeds
+	);
 
 	function handleInputChange(e) {
 		setInput(e.target.value);
 	}
 
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
-		dispatch(getByName(input));
+		await dispatch(getByName(input));
 		setInput("");
 		dispatch(setActualPage(1));
+		if (pathname !== "/home") history.push("/home");
 	}
 
 	return (

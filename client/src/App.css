@@ -1,29 +1,31 @@
 body {
-  font-family: Poppins;
-  font-size: 1.4rem;
+	font-family: Poppins;
+	font-size: 1.4rem;
+	background-color: rgb(255, 243, 223);
 }
 
-
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .App main {
-  max-width: 1024px;
-  min-width: 1024px;
+	max-width: 1024px;
+	min-width: 1024px;
 }
 
 .App header {
-  max-width: 100%;
-  min-width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #2A0944;
+	max-width: 100%;
+	min-width: 100%;
+	display: flex;
+	justify-content: center;
+	background-color: #2a0944;
 }
 
-textarea:focus, input:focus, select:focus{
-  outline: none;
-} 
+textarea:focus,
+input:focus,
+select:focus {
+	outline: none;
+}

@@ -23,10 +23,11 @@
 	border-radius: 14px;
 	background: 0;
 	justify-items: center;
-	border: 1px solid #d0d0d0;
+	border: 1px solid #a7a5a5;
 	padding: 3px;
 	height: 27px;
 	width: 27px;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
 }
 
 .reload:hover {

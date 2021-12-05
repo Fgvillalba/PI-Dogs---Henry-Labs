@@ -8,81 +8,102 @@ export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const CLEAR = "CLEAR";
+export const CLEAR_BREED_DETAIL = "CLEAR_BREED_DETAIL";
 export const POST_BREED = "POST_BREED";
 export const SET_ACTUAL_PAGE = "SET_ACTUAL_PAGE";
 
 export function getDogs() {
-  return async function (dispatch) {
-    var res = await axios.get("http://localhost:3001/dogs");
-    dispatch({ type: GET_DOGS, payload: res.data });
-  };
+	return async function (dispatch) {
+		var res = await axios.get(
+			"http://localhost:3001/dogs"
+		);
+		dispatch({ type: GET_DOGS, payload: res.data });
+	};
 }
 
 export function getByName(payload) {
-  return async function (dispatch) {
-    var res = await axios.get(`http://localhost:3001/dogs?name=${payload}`);
-    dispatch({ type: GET_BY_NAME, payload: res.data });
-  };
+	return async function (dispatch) {
+		var res = await axios.get(
+			`http://localhost:3001/dogs?name=${payload}`
+		);
+		dispatch({ type: GET_BY_NAME, payload: res.data });
+	};
 }
 
 export function getById(payload) {
-  return async function (dispatch) {
-    var res = await axios.get(`http://localhost:3001/dogs/${payload}`);
-    dispatch({ type: GET_BY_ID, payload: res.data });
-  };
+	return async function (dispatch) {
+		var res = await axios.get(
+			`http://localhost:3001/dogs/${payload}`
+		);
+		dispatch({ type: GET_BY_ID, payload: res.data });
+	};
 }
 
 export function getTemperaments() {
-  return async function (dispatch) {
-    var res = await axios.get("http://localhost:3001/temperament");
-    dispatch({ type: GET_TEMPERAMENTS, payload: res.data });
-  };
+	return async function (dispatch) {
+		var res = await axios.get(
+			"http://localhost:3001/temperament"
+		);
+		dispatch({
+			type: GET_TEMPERAMENTS,
+			payload: res.data,
+		});
+	};
 }
 
 export function filterByTemp(payload) {
-  return {
-    type: FILTER_BY_TEMP,
-    payload,
-  };
+	return {
+		type: FILTER_BY_TEMP,
+		payload,
+	};
 }
 
 export function filterByOrigin(payload) {
-  return {
-    type: FILTER_BY_ORIGIN,
-    payload,
-  };
+	return {
+		type: FILTER_BY_ORIGIN,
+		payload,
+	};
 }
 
 export function orderByWeight(payload) {
-  return {
-    type: ORDER_BY_WEIGHT,
-    payload,
-  };
+	return {
+		type: ORDER_BY_WEIGHT,
+		payload,
+	};
 }
 
 export function orderByName(payload) {
-  return {
-    type: ORDER_BY_NAME,
-    payload,
-  };
+	return {
+		type: ORDER_BY_NAME,
+		payload,
+	};
 }
 
 export function clear() {
-  return {
-    type: CLEAR,
-  };
+	return {
+		type: CLEAR,
+	};
+}
+
+export function clearBreedDetail() {
+	return {
+		type: CLEAR_BREED_DETAIL,
+	};
 }
 
 export function postBreed(payload) {
-  return async function (dispatch) {
-    var res = await axios.post("http://localhost:3001/dog/", payload);
-    return res;
-  };
+	return async function (dispatch) {
+		var res = await axios.post(
+			"http://localhost:3001/dog/",
+			payload
+		);
+		return res;
+	};
 }
 
 export function setActualPage(payload) {
-  return {
-    type: SET_ACTUAL_PAGE,
-    payload,
-  };
+	return {
+		type: SET_ACTUAL_PAGE,
+		payload,
+	};
 }
